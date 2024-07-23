@@ -5,7 +5,7 @@ on:
 jobs:
   Plan_Dev:
     if: github.ref == 'refs/heads/FeatureBranch1'
-    uses: Olaminiyi/gitreusableflows/.github/workflows/aws_tf_plan.yml@FeatureBranch1
+    uses: Olaminiyi/Deploying-applications-to-Kubernetes-using-GitOps/.github/workflows/aws_tf_plan.yml@FeatureBranch1
     with:
       path: IAMRoles
       tf_vars_file: dev.tfvars
@@ -15,7 +15,7 @@ jobs:
 
   Deploy_Dev:
     needs: Plan_Dev
-    uses: Olaminiyi/gitreusableflows/.github/workflows/aws_tf_appy.yml@FeatureBranch1
+    uses: Olaminiyi/Deploying-applications-to-Kubernetes-using-GitOps/.github/workflows/aws_tf_appy.yml@FeatureBranch1
     with:
       path: IAMRoles
       tf_vars_file: dev.tfvars
@@ -25,7 +25,7 @@ jobs:
 
   Plan_Uat:
     if: github.ref == 'refs/heads/main'
-    uses: Olaminiyi/gitreusableflows/.github/workflows/aws_tf_plan.yml@main
+    uses: Olaminiyi/Deploying-applications-to-Kubernetes-using-GitOps/.github/workflows/aws_tf_plan.yml@main
     with:
       path: IAMRoles
       tf_vars_file: uat.tfvars
@@ -35,7 +35,7 @@ jobs:
 
   Deploy_Uat:
     needs: Plan_Uat
-    uses: Olaminiyi/gitreusableflows/.github/workflows/aws_tf_appy.yml@main
+    uses: Olaminiyi/Deploying-applications-to-Kubernetes-using-GitOps/.github/workflows/aws_tf_appy.yml@main
     with:
       path: IAMRoles
       tf_vars_file: uat.tfvars
