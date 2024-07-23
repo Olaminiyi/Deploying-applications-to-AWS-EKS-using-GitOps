@@ -37,7 +37,7 @@ jobs:
     needs: Plan_Uat
     uses: Olaminiyi/Deploying-applications-to-Kubernetes-using-GitOps/.github/workflows/aws_tf_appy.yml@main
     with:
-      path: EKS-ECR
+      path: IAMRoles
       tf_vars_file: uat.tfvars
       gh_environment: uat
     secrets:
