@@ -1,7 +1,7 @@
 module "ecr" {
   source = "terraform-aws-modules/ecr/aws"
 
-  repository_name = "myapp"
+  repository_name = "myapp-ECR"
   version = "2.2.1"
 
   repository_read_write_access_arns = ["arn:aws:iam::992382761454:role/terraform"]
@@ -23,8 +23,10 @@ module "ecr" {
     ]
   })
 
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
+   tags = merge(
+    var.tags,
+    {
+      Name = format("%s-ECR", var.name)
+    },
+  )
 }
