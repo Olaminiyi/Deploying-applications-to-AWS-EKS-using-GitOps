@@ -36,6 +36,9 @@ jobs:
         working-directory: ${{ inputs.path }}
         
     steps:
+
+      
+
       - name: Checkout
         uses: actions/checkout@v3.1.0
         
@@ -48,6 +51,13 @@ jobs:
         with:
           terraform_version: ${{ inputs.tf_version }}
           cli_config_credentials_token: ${{ secrets.cli_config_credentials_token }}
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
 
       - name: Terraform Init
         id: init
@@ -65,3 +75,5 @@ jobs:
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
+
+        #
