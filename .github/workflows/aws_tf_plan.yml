@@ -25,9 +25,7 @@ on:
       cli_config_credentials_token:
         description: 'cli config credentials token'
         required: true
-    env:
-     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
-     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    
 
 jobs:
   build-plan:

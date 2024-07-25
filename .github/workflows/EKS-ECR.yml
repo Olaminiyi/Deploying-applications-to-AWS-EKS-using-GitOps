@@ -2,9 +2,13 @@ name: "EKS-ECR"
 on:
   workflow_dispatch:
 
+env:
+     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
+     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 jobs:
 
-
+  
   Plan_Dev:
     if: github.ref == 'refs/heads/FeatureBranch1'
     uses: Olaminiyi/Deploying-applications-to-Kubernetes-using-GitOps/.github/workflows/aws_tf_plan.yml@FeatureBranch1
@@ -35,6 +39,7 @@ jobs:
       gh_environment: uat
     secrets:
       cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    
 
   Deploy_Uat:
     needs: Plan_Uat
