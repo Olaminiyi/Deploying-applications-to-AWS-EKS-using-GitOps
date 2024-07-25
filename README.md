@@ -35,3 +35,8 @@ aws iam create-open-id-connect-provider \
 
 
  "OpenIDConnectProviderArn": "arn:aws:iam::992382761454:oidc-provider/token.actions.githubusercontent.com"
+
+
+ with:
+          role-to-assume: arn:aws:iam::992382761454:role/GitHubActionRole
+          aws-region: us-east-1
