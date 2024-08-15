@@ -12,7 +12,7 @@
             aws-region: us-east-1
 
 
-Step 1: Create an OIDC provider in your account
+Step 1: Create an OIDC provider in your account.
 
 aws iam create-open-id-connect-provider --url "https://token.actions.githubusercontent.com" --thumbprint-list "6938fd4d98bab03faadb97b34396831e3780aea1" ‐‐client-id-list 'sts.amazonaws.com'
 
